@@ -7,7 +7,6 @@ class ItemCard extends React.Component {
   }
   async deleteItem(e) {
     let deleteItemId = e.target.id
-    console.log(deleteItemId)
     let res = await fetch('http://localhost:3008/delete/' + deleteItemId)
     this.props.discardItem(deleteItemId)
   }

@@ -33,8 +33,7 @@ app.get('/delete/:id', async function (req, res) {
 app.put('/insert', async function (req, res) {
   console.log(req.body)
   let itemId = await insertItem(req.body)
-  console.log(itemId)
-  res.send('keeeel')
+  res.send(itemId)
 })
 
 app.listen(port, () => console.log('listening on port 3008'))
