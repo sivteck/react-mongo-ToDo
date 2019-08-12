@@ -1,0 +1,22 @@
+.itemA {
+    display: inline-block;
+}
+
+div.itemA {
+    padding-top: 30px;
+    max-width: 500px;
+    /* border: 2px solid gray;
+    border-radius: 20px; */
+}
+
+input {
+    min-width: 500px;
+    min-height: 40px;
+    font-size: 20px;
+    border-width: thin;
+    border-left: 5px solid gray;
+    border-right: 2px solid gray;
+    border-bottom: 2px solid gray;
+    border-radius: 5px;
+    margin-left: -5px;
+}

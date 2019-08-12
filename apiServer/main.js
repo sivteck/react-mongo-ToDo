@@ -30,7 +30,7 @@ app.get('/delete/:id', async function (req, res) {
   res.send(`deleted item ${id}`)
 })
 
-app.put('/insert', async function (req, res) {
+app.post('/insert', async function (req, res) {
   console.log(req.body)
   let itemId = await insertItem(req.body)
   res.send(itemId)

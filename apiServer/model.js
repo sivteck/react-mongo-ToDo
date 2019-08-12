@@ -9,7 +9,8 @@ let itemSchema = new mongoose.Schema({
   name: String,
   notes: String,
   priority: String,
-  label: String
+  label: String,
+  created: Date
 })
   
 let Item = mongoose.model('Item', itemSchema)
