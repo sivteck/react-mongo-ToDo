@@ -15,8 +15,9 @@ input {
     font-size: 20px;
     border-width: thin;
     border-left: 5px solid gray;
+    border-top: 1px solid gray;
     border-right: 2px solid gray;
     border-bottom: 2px solid gray;
     border-radius: 5px;
-    margin-left: -5px;
+    /* margin-left: -5px; */
 }

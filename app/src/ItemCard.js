@@ -4,13 +4,14 @@ import './ItemCard.css'
 class ItemCard extends React.Component {
   constructor(props) {
     super(props)
-    console.log(props)
   }
+
   async deleteItem(e) {
     let deleteItemId = e.target.id
     let res = await fetch('http://localhost:3008/delete/' + deleteItemId)
     this.props.discardItem(deleteItemId)
   }
+
   render() {
   let item = this.props.itemObj
   let discardItem = this.props.discardItem
