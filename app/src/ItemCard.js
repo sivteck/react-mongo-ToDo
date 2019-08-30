@@ -1,20 +1,17 @@
 import React from 'react';
 import './ItemCard.css'
 
-class ItemCard extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+function ItemCard (props) {
 
-  async deleteItem(e) {
+  async function deleteItem(e) {
     let deleteItemId = e.target.id
     let res = await fetch('http://localhost:3008/delete/' + deleteItemId)
-    this.props.discardItem(deleteItemId)
+    props.discardItem(deleteItemId)
   }
 
-  render() {
-  let item = this.props.itemObj
-  let discardItem = this.props.discardItem
+  let item = props.itemObj
+  let discardItem = props.discardItem
+
   return ( 
       <div className="itemC" id="{item._id}">
       <div className="itemHead">
@@ -33,7 +30,7 @@ class ItemCard extends React.Component {
       </div>
      </div>
   )
-  }
+
 }
 
 export default ItemCard;

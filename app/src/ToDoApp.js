@@ -1,19 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ItemView from './ItemView.js'
 import ItemAdd from './ItemAdd.js'
 
-class ToDoApp extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { items: [] }
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
+function TodoApp () {
+  let [items, setItems] = useState([])
 
-  async componentDidMount() {
-    await this.fetchItems()
-  }
-
-  async handleSubmit (e) {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     let name = document.getElementById('item-name').value
     let item = { name: name, created: Date.now() }
@@ -22,24 +14,25 @@ class ToDoApp extends React.Component {
     let res = await fetch('http://localhost:3008/insert', reqBody)
     let resJSON = await res.json()
     item = Object.assign({ label: 'null', priority: 'Low', notes: 'null' }, item)
-    this.fetchItems()
+    fetchItems()
   }
 
-  async fetchItems() {
+  async function fetchItems () {
     let res = await fetch('http://localhost:3008/items')
     let items = await res.json()
-    this.setState({ items: items })
-    console.log('me me me ///')
+    setItems(items)
   }
 
-  render() {
-    return (
+  useEffect( () => {
+    fetchItems()
+  }, [])
+
+  return (
       <div>
-        <ItemAdd updateView={this.handleSubmit} />
-        <ItemView items={this.state.items}/>
+        <ItemAdd updateView={handleSubmit} />
+        <ItemView updateView={fetchItems} items={items}/>
       </div>
-    )
-  }
+  )
 }
 
-export default ToDoApp;
+export default TodoApp;
